@@ -11,7 +11,7 @@ SMTP is very flexible but that flexibility can be challenging to deal with from 
 
 ### Encryption - Forced, Opportunistic, or None
 
-   It is important to understand the various modes email encryption modes.  With *forced encryption* (also called *implicit*), the entire session with the mail server is encrypted from start to end.  Nothing is in plaintext.  With *opportunistic encryption* (also called *explicit*) the session begins in plaintext but is subseuqently elevated to encrypted by sending a STARTTLS command.  Said differently, if encryption is *allowed* (but not *required*) by the server it is *opportunistic*.  If it is required by the server it is *forced*. When no encryption is supported, the entire session is in plaintext (highly unlikely).
+   It is important to understand the various modes email encryption modes.  With *forced encryption* (also called *implicit*), the entire session with the mail server is encrypted from start to end.  Nothing is in plaintext.  With *opportunistic encryption* (also called *explicit*) the session begins in plaintext but is subsequently elevated to encrypted by sending a STARTTLS command.  Said differently, if encryption is *allowed* (but not *required*) by the server it is *opportunistic*.  If it is required by the server it is *forced*. When no encryption is supported, the entire session is in plaintext (highly unlikely).
 
 ## Installation
 
