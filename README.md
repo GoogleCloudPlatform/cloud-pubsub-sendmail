@@ -9,7 +9,7 @@ SMTP is very flexible but that flexibility can be challenging to deal with from 
 
 ## Why was this written?
 
-Google Cloud recommends using tools such as [SendGrid to send emails from Cloud Functions triggered by Cloud Pub/Sub](https://cloud.google.com/security-command-center/docs/how-to-enable-real-time-notifications).  Static IP addresses are available from services like SendGrid at designated service tiers.   Services such as SendGrid offer many production level features and are supported by the service vendors.  If your mail volume is relatively low but you still need a static IP, using a native Cloud Function like pubsub_sendmail may be cost effective.  The tradeoff, of course, is that you must implement and support the Cloud Function. The pubsub_sendmail function supports the use of a static IP using the VPC Access Connector along with Cloud NAT.
+Google Cloud recommends using tools such as [SendGrid to send emails from Cloud Functions triggered by Cloud Pub/Sub](https://cloud.google.com/security-command-center/docs/how-to-enable-real-time-notifications).  Services such as SendGrid offer many production level features and are supported by the service vendors.  If your mail volume is relatively low but need a static IP, using a native Cloud Function like pubsub_sendmail is an alternative route.  The tradeoff, of course, is that you must implement and support the Cloud Function. The pubsub_sendmail function supports the use of a static IP using the VPC Access Connector along with Cloud NAT.
 
 ## Diagram
 
