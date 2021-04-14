@@ -7,6 +7,12 @@ pubsub_sendmail is configured using environment variables in the deployment shel
 
 SMTP is very flexible but that flexibility can be challenging to deal with from a configuration perspective. The best way to deal with problems in the configuration is to do incremental testing and look at the [Cloud Functions Logs](https://cloud.google.com/functions/docs/monitoring/logging).
 
+## Diagram
+
+Here is a diagram of how a message issued from Cloud Pub/Sub would travel through the Cloud Function and then generate an e-mail.
+
+![pubsub-sendmail diagram](https://github.com/GoogleCloudPlatform/cloud-pubsub-sendmail/blob/main/pubsub-sendmail.png)
+
 ## Concepts
 
 ### Encryption - Forced, Opportunistic, or None
