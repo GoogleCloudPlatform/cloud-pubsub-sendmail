@@ -7,9 +7,9 @@ pubsub_sendmail is configured using environment variables in the deployment shel
 
 SMTP is very flexible but that flexibility can be challenging to deal with from a configuration perspective. The best way to deal with problems in the configuration is to do incremental testing and look at the [Cloud Functions Logs](https://cloud.google.com/functions/docs/monitoring/logging).
 
-## Why did I write this?
+## Why was this written?
 
-Google Cloud recommends using tools such as [SendGrid to send emails from Cloud Functions triggered by Cloud Pub/Sub](https://cloud.google.com/security-command-center/docs/how-to-enable-real-time-notifications).  Static IP addresses are available from services like SendGrid at designated service tiers.   If your mail volume is relatively low but you still need a static IP, using a native Cloud Function like pubsub_sendmail may be cost effective.  The tradeoff, of course, is that you must implement and support the Cloud Function. The function supports the use of a static IP using the VPC Access Connector along with Cloud NAT.
+Google Cloud recommends using tools such as [SendGrid to send emails from Cloud Functions triggered by Cloud Pub/Sub](https://cloud.google.com/security-command-center/docs/how-to-enable-real-time-notifications).  Static IP addresses are available from services like SendGrid at designated service tiers.   Services such as SendGrid offer many production level features and are supported by the service vendors.  If your mail volume is relatively low but you still need a static IP, using a native Cloud Function like pubsub_sendmail may be cost effective.  The tradeoff, of course, is that you must implement and support the Cloud Function. The pubsub_sendmail function supports the use of a static IP using the VPC Access Connector along with Cloud NAT.
 
 ## Diagram
 
