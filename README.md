@@ -7,6 +7,10 @@ pubsub_sendmail is configured using environment variables in the deployment shel
 
 SMTP is very flexible but that flexibility can be challenging to deal with from a configuration perspective. The best way to deal with problems in the configuration is to do incremental testing and look at the [Cloud Functions Logs](https://cloud.google.com/functions/docs/monitoring/logging).
 
+## Why did I write this?
+
+Google Cloud recommends using tools such as [SendGrid to send emails from Cloud Functions triggered by Cloud Pub/Sub](https://cloud.google.com/security-command-center/docs/how-to-enable-real-time-notifications).  Static IP addresses are available from services like SendGrid at designated service tiers.   If your mail volume is relatively low but you still need a static IP, using a native Cloud Function like pubsub_sendmail may be cost effective.  The tradeoff, of course, is that you must implement and support the Cloud Function. The function supports the use of a static IP using the VPC Access Connector along with Cloud NAT.
+
 ## Diagram
 
 Here is a diagram of how a message issued from Cloud Pub/Sub would travel through the Cloud Function and then generate an e-mail.
@@ -17,7 +21,16 @@ Here is a diagram of how a message issued from Cloud Pub/Sub would travel throug
 
 ### Encryption - Forced, Opportunistic, or None
 
-   It is important to understand the various modes email encryption modes.  With *forced encryption* (also called *implicit*), the entire session with the mail server is encrypted from start to end.  Nothing is in plaintext.  With *opportunistic encryption* (also called *explicit*) the session begins in plaintext but is subsequently elevated to encrypted by sending a STARTTLS command.  Said differently, if encryption is *allowed* (but not *required*) by the server it is *opportunistic*.  If it is required by the server it is *forced*. When no encryption is supported, the entire session is in plaintext (highly unlikely).
+It is important to understand the various modes email encryption modes.  With *forced encryption* (also called *implicit*), the entire session with the mail server is encrypted from start to end.  Nothing is in plaintext.  With *opportunistic encryption* (also called *explicit*) the session begins in plaintext but is subsequently elevated to encrypted by sending a STARTTLS command.  Said differently, if encryption is *allowed* (but not *required*) by the server it is *opportunistic*.  If it is required by the server it is *forced*. When no encryption is supported, the entire session is in plaintext (highly unlikely).
+   
+## Costs
+
+You are responsible for the costs associated with this implementation.  The costs include but are not limited to the following:
+
+1. the Cloud Function
+2. the VPC Access Connector
+3. Cloud NAT (if you need a static IP)
+4. Data egress charges
 
 ## Installation
 
