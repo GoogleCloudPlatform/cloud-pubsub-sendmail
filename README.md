@@ -111,7 +111,7 @@ Here are the high level steps that are needed to deploy pubsub_sendmail.  This w
 
    ```
    chmod 755 deploy-pubsub-sendmail
-   ./deploy-pubsub-sendmail
+   ./deploy-pubsub-sendmail.sh
    ```
 
 ## Common connection problems and ways to address them
