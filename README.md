@@ -113,6 +113,13 @@ Here are the high level steps that are needed to deploy pubsub_sendmail.  This w
    chmod 755 deploy-pubsub-sendmail
    ./deploy-pubsub-sendmail.sh
    ```
+## Testing the Cloud Function
+
+1. To test pubsub_sendmail, just publish a message to your topic using this command (substituting the name of your Pub/Sub topic for $FN_PUBSUB_TOPIC):
+
+   ```
+   gcloud pubsub topics publish $FN_PUBSUB_TOPIC --message "This is a test"
+   ```
 
 ## Common connection problems and ways to address them
 
