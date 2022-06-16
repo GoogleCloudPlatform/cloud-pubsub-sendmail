@@ -1,3 +1,6 @@
+jinja2<3.1.0
+itsdangerous==2.0.1
+werkzeug==2.0.3
 flask==1.1.2
 google-cloud-error-reporting==1.1.1
 click>=7.0,<8.0
