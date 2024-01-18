@@ -21,6 +21,7 @@
 #
 # MAIL_FROM       = Email address of the sender (e.g. user@example.com).
 # MAIL_TO         = Email address of the recipient (e.g. user@example.com).
+# MAIL_BCC        = Email address of the BCC multiple recievers.
 # MAIL_SERVER     = Host:tcpport of email server (e.g. mail.example.com:587).
 #                   If unspecified, the default port is 25.
 # MAIL_SUBJECT    = Email subject (e.g. "Pub/Sub Email").
@@ -51,6 +52,7 @@ def pubsub_sendmail(event, context):
 
     mailFrom      = os.environ.get('MAIL_FROM', '').strip()
     mailTo        = os.environ.get('MAIL_TO', '').strip()
+    mailBcc       = os.environ.get('MAIL_BCC', '').strip()
     mailSubject   = os.environ.get('MAIL_SUBJECT', '').strip()
     mailServer    = os.environ.get('MAIL_SERVER', '').strip()
     mailLocalHost = os.environ.get('MAIL_LOCAL_HOST', '').strip()
@@ -72,6 +74,7 @@ def pubsub_sendmail(event, context):
     if debugFlag:
         print('Mail from: {}'.format(mailFrom))
         print('Mail to: {}'.format(mailTo))
+        print('Mail Bcc: {}'.format(mailBcc))
         print('Mail subject: {}'.format(mailSubject))
         print('Mail server: {}'.format(mailServer))
         print('Mail local host: {}'.format(mailLocalHost))
@@ -85,6 +88,7 @@ def pubsub_sendmail(event, context):
     outboundMessage['Subject'] = mailSubject
     outboundMessage['From'] = mailFrom
     outboundMessage['To'] = mailTo
+    outboundMessage['Bcc'] = mailBcc
 
     # You may need to customize this flow to support your mail relay configuration.
     # Examples may include authentication, encryption, etc.

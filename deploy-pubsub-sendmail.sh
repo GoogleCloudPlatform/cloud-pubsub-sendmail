@@ -24,6 +24,7 @@
 
 # MAIL_FROM       = Email address of the sender (e.g. user@example.com).
 # MAIL_TO         = Email address of the recipient (e.g. user@example.com).
+# MAIL_BCC        = Email address of the BCC multiple recievers.
 # MAIL_SERVER     = Host:tcpport of email server (e.g. mail.example.com:587).
 #                   If unspecified, the default port is 25.
 # MAIL_SUBJECT    = Email subject (e.g. "Pub/Sub Email").
@@ -57,6 +58,7 @@ gcloud services enable cloudbuild.googleapis.com cloudfunctions.googleapis.com
 
 MAIL_FROM="fromuser@example.com"
 MAIL_TO="touser@example.com"
+MAIL_BCC="abc@example.com,bccuser@example.com"
 # MAIL_SERVER="smtp-relay.gmail.com:465"
 MAIL_SUBJECT="Cloud Pub/Sub Email"
 MAIL_LOCAL_HOST="pubsub-sendmail-nat.example.com"
@@ -74,6 +76,7 @@ ENVVARS_FILE=/tmp/send_mail_envvars.$$
 cat <<EOF >$ENVVARS_FILE
 MAIL_FROM: "$MAIL_FROM"
 MAIL_TO: "$MAIL_TO"
+MAIL_BCC: "$MAIL_BCC"
 MAIL_SERVER: "$MAIL_SERVER"
 MAIL_SUBJECT: "$MAIL_SUBJECT"
 MAIL_LOCAL_HOST: "$MAIL_LOCAL_HOST"
