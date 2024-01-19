@@ -83,29 +83,30 @@ Here are the high level steps that are needed to deploy pubsub_sendmail.  This w
 
 7. Edit the deploy-pubsub-sendmail file and make the changes below to the environment variables.
 
-   * MAIL_FROM - Set this to the email address of the sender (e.g. user@example.com).
+  * MAIL_FROM - Set this to the email address of the sender (e.g. user@example.com).
 
-   * MAIL_TO - Set this to the email address of the recipient (e.g. user@example.com).
+  * MAIL_TO - Set this to the email address of the recipient (e.g. user@example.com).
+  * MAIL_BCC - Set this to the email address of the BCC multiple recievers. 
 
-   * MAIL_SERVER - Set this to the host and TCP port of email server (e.g. mail.example.com:587). If the port number is not specified and MAIL_FORCE_TLS is set to TRUE then the port defaults to 465.  Otherwise the port defaults to 25.  Note that Google Cloud blocks egress to port 25.  Port 587 is often used as an alternative for opportunistic or no encryption.
+  * MAIL_SERVER - Set this to the host and TCP port of email server (e.g. mail.example.com:587). If the port number is not specified and MAIL_FORCE_TLS is set to TRUE then the port defaults to 465.  Otherwise the port defaults to 25.  Note that Google Cloud blocks egress to port 25.  Port 587 is often used as an alternative for opportunistic or no encryption.
 
-   * MAIL_SUBJECT - Set this to the email subject (e.g. "Pub/Sub Email").
+  * MAIL_SUBJECT - Set this to the email subject (e.g. "Pub/Sub Email").
 
-   * MAIL_FORCE_TLS - Set this to TRUE for forced (also known as implicit) encryption.  If unset or set to any other value then encryption is opportunistic (also known as explicit).
+  * MAIL_FORCE_TLS - Set this to TRUE for forced (also known as implicit) encryption.  If unset or set to any other value then encryption is opportunistic (also known as explicit).
 
-   * MAIL_LOCAL_HOST - Set this to the fully qualified domain to use for the EHLO/HELO SMTP command.  A Cloud Function does not have a host name that is associated with your mail ddomain.  The mail server may be fine without that.  The smtplib functions will generate a default hostname.  You can try this default if you wish but it may not behave as expected.
+  * MAIL_LOCAL_HOST - Set this to the fully qualified domain to use for the EHLO/HELO SMTP command.  A Cloud Function does not have a host name that is associated with your mail ddomain.  The mail server may be fine without that.  The smtplib functions will generate a default hostname.  You can try this default if you wish but it may not behave as expected.
 
-   * MAIL_DEBUG - Set this to TRUE to generate additional debugging info in the Cloud Functions log.  If unset or set to anything other than TRUE then no additional debugging info is generated.
+  * MAIL_DEBUG - Set this to TRUE to generate additional debugging info in the Cloud Functions log.  If unset or set to anything other than TRUE then no additional debugging info is generated.
 
-   * FN_PUBSUB_TOPIC - Set this to the Cloud Function Pub/Sub from which pubsub_sendmail will receive events.
+  * FN_PUBSUB_TOPIC - Set this to the Cloud Function Pub/Sub from which pubsub_sendmail will receive events.
 
-   * FN_REGION - Set this to the Google Cloud region in which to deploy the function.  Note that Cloud Functions must be supported in this region.
+  * FN_REGION - Set this to the Google Cloud region in which to deploy the function.  Note that Cloud Functions must be supported in this region.
 
-   * FN_SOURCE_DIR - Set this to the source directory for the function code, the directory that contains the main.py file.
+  * FN_SOURCE_DIR - Set this to the source directory for the function code, the directory that contains the main.py file.
 
-   * FN_SA - Set this to the service account to use for the pubsub_sendmail Cloud Function.  Use the complete email address of the service account.
+  * FN_SA - Set this to the service account to use for the pubsub_sendmail Cloud Function.  Use the complete email address of the service account.
 
-   * FN_VPC_CONN - Set this to the VPC Connector to use.  If not set, then egress traffic from pubsub_sendmail will go out over the internet directly.
+  * FN_VPC_CONN - Set this to the VPC Connector to use.  If not set, then egress traffic from pubsub_sendmail will go out over the internet directly.
 
 8. Deploy the pubsub_sendmail function.
 
